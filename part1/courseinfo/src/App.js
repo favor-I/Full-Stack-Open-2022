@@ -1,3 +1,12 @@
+//Variables declaration
+const course = 'Half Stack application development'
+const part1 = 'Fundamentals of React'
+const part2 = 'Using props to pass data'
+const part3 = 'State of a component'
+const exercises1 = 10
+const exercises2 = 7
+const exercises3 = 14
+
 const Header = (props) => {
   return(
     <>
@@ -6,11 +15,20 @@ const Header = (props) => {
   );
 }
 
+//Part components
+const Part = (props) => {
+  return (
+    <p>Title: {props.part} | number of exercise: {props.exercise}</p>
+  )
+}
+
 //Header component
-const Content = (props) => {
+const Content = () => {
   return(
     <>
-      <p>Title: {props.part} | number of exercise: {props.exercise}</p>
+      <Part part = {part1} exercise = {exercises1}  />
+      <Part part = {part2} exercise = {exercises2}  />
+      <Part part = {part3} exercise = {exercises3}  />
     </>
   );
 }
@@ -26,20 +44,10 @@ const Total = (props) => {
 
 //App component 
 function App() {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
-
   return (
     <>
       <Header course = {course} />
-      <Content part = {part1} exercise = {exercises1}  />
-      <Content part = {part2} exercise = {exercises2}  />
-      <Content part = {part3} exercise = {exercises3}  />
+      <Content/>
       <Total firstExercise = {exercises1} secExercise = {exercises2} thirdExercise = {exercises3} />
     </>
   );
