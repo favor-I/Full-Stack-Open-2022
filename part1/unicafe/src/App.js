@@ -2,8 +2,23 @@ import { useState } from "react";
 
 const Button = ({funcToCall, text}) =>  <button onClick={funcToCall}>{text}</button>
 
-const Statistics = () => 
-{}
+const Statistics = ({title,goodStat,badStat,neutralStat}) => {
+  const total = (goodStat + neutralStat + badStat);
+  const average = ((goodStat *1) + (badStat * -1))/total;
+  const positive = (goodStat * (100/total));
+
+  return (
+    <>
+      <h2>{title}</h2>
+      <p>Good: {goodStat}</p>
+      <p>Neutral: {neutralStat}</p>
+      <p>Bad: {badStat}</p>
+      <p>Total: {total}</p>
+      <p>Average: {average}</p>
+      <p>Positive: {positive}</p>
+    </>
+  );
+}
 
 function App() {
   const [clicks, setClicks] = useState({
@@ -12,16 +27,6 @@ function App() {
     bad: 0
   })
 
-  // const handleGoodClicks = () => {
-  //   setClicks({...clicks, good: clicks.good + 1})
-  // }
-  // const handleNeutralClicks = () => {
-  //   setClicks({...clicks, neutral: clicks.neutral + 1})
-  // }
-  // const handleBadClicks = () => {
-  //   setClicks({...clicks, bad: clicks.bad + 1})
-  // }
-
   return (
     <>
       <section>
@@ -29,13 +34,8 @@ function App() {
         <Button funcToCall={ () => setClicks({...clicks, good: clicks.good + 1})} text = "Good" />
         <Button funcToCall={() => setClicks({...clicks, neutral: clicks.neutral + 1})} text = "Neutral" />
         <Button funcToCall={() => setClicks({...clicks, bad: clicks.bad + 1})} text = "Bad" />
-        <h2>Statistics</h2>
-        <p>Good: {clicks.good}</p>
-        <p>Neutral: {clicks.neutral}</p>
-        <p>Bad: {clicks.bad}</p>
-        <p>Total: {clicks.bad + clicks.good +clicks.neutral}</p>
-        <p>Average: {((clicks.good *1) + (clicks.bad * -1))/(clicks.bad + clicks.good +clicks.neutral)}</p>
-        <p>Positive: {clicks.good * (100/(clicks.bad + clicks.good +clicks.neutral))}</p>
+        <Statistics title="Statistics" goodStat={clicks.good} neutralStat={clicks.neutral} badStat={clicks.bad}/>
+
       </section>
     </>
   );
