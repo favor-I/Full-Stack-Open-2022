@@ -7,17 +7,23 @@ const Statistics = ({title,goodStat,badStat,neutralStat}) => {
   const average = ((goodStat *1) + (badStat * -1))/total;
   const positive = (goodStat * (100/total));
 
-  return (
-    <>
-      <h2>{title}</h2>
-      <p>Good: {goodStat}</p>
-      <p>Neutral: {neutralStat}</p>
-      <p>Bad: {badStat}</p>
-      <p>Total: {total}</p>
-      <p>Average: {average}</p>
-      <p>Positive: {positive}</p>
-    </>
-  );
+  if(total === 0) {
+    return (
+      <p>No feedback given</p>
+    );
+  } else {
+    return (
+      <>
+        <h2>{title}</h2>
+        <p>Good: {goodStat}</p>
+        <p>Neutral: {neutralStat}</p>
+        <p>Bad: {badStat}</p>
+        <p>Total: {total}</p>
+        <p>Average: {average}</p>
+        <p>Positive: {positive}</p>
+      </>
+    );
+  }
 }
 
 function App() {
