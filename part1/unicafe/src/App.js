@@ -2,6 +2,9 @@ import { useState } from "react";
 
 const Button = ({funcToCall, text}) =>  <button onClick={funcToCall}>{text}</button>
 
+const Statistics = () => 
+{}
+
 function App() {
   const [clicks, setClicks] = useState({
     good: 0,
@@ -31,6 +34,8 @@ function App() {
         <p>Neutral: {clicks.neutral}</p>
         <p>Bad: {clicks.bad}</p>
         <p>Total: {clicks.bad + clicks.good +clicks.neutral}</p>
+        <p>Average: {((clicks.good *1) + (clicks.bad * -1))/(clicks.bad + clicks.good +clicks.neutral)}</p>
+        <p>Positive: {clicks.good * (100/(clicks.bad + clicks.good +clicks.neutral))}</p>
       </section>
     </>
   );
