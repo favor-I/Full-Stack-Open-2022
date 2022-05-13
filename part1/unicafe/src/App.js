@@ -30,6 +30,7 @@ function App() {
         <p>Good: {clicks.good}</p>
         <p>Neutral: {clicks.neutral}</p>
         <p>Bad: {clicks.bad}</p>
+        <p>Total: {clicks.bad + clicks.good +clicks.neutral}</p>
       </section>
     </>
   );
