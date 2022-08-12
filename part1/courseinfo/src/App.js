@@ -1,4 +1,5 @@
 //Variables declaration 
+import React, {useState} from 'react';
 const course = {
   name: 'Half Stack application development',
   parts: [

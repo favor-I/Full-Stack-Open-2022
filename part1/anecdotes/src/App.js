@@ -12,12 +12,18 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ]
-   
-  const [selected, setSelected] = useState(0)
+
+  const points = [1, 4, 6, 3]
+
+  const copy = [...points]
+  // increment the value in position 2 by one
+  copy[2] += 1 
+  const [selected, setSelected] = useState(0)   
 
   return (
     <>
       <p>{anecdotes[selected]}</p>
+      <Button value={()=> 0} text="Vote"/>
       <Button value={()=> anecdotes[setSelected(selected+1)]} text="Next anecdote"/>
     </>
   )
